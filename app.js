@@ -1,4 +1,5 @@
 //here all modules are imported first
+require('dotenv').config();
 const express = require("express");
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
@@ -9,7 +10,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect("mongodb://127.0.0.1:27017/tododb", { useNewUrlParser: true });
+mongoose.connect(process.env.dblink, { useNewUrlParser: true });
 
 
 //schema for default list
